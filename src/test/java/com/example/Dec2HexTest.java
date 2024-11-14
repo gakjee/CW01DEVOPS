@@ -1,4 +1,3 @@
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
@@ -28,7 +27,7 @@ public class Dec2HexTest {
 
         Dec2Hex.main(new String[]{});
 
-        String expectedOutput = "Please provide a decimal number as an argument>
+        String expectedOutput = "Please provide a decimal number as an argument.\n";
         assertTrue(outputStream.toString().contains(expectedOutput));
 
         System.setOut(originalOut);
@@ -42,7 +41,7 @@ public class Dec2HexTest {
 
         Dec2Hex.main(new String[]{"ABC"});
 
-        String expectedOutput = "Invalid input. Please enter a valid integer.\n>
+        String expectedOutput = "Invalid input. Please enter a valid integer.\n";
         assertTrue(outputStream.toString().contains(expectedOutput));
 
         System.setOut(originalOut);
@@ -62,6 +61,4 @@ public class Dec2HexTest {
         System.setOut(originalOut);
     }
 }
-
-
 
