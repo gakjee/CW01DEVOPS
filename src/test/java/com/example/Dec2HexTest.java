@@ -12,7 +12,7 @@ public class Dec2HexTest {
         System.setOut(new PrintStream(outputStream));
 
         Dec2Hex.main(new String[]{"255"});
-        String expectedOutput = "Hexadecimal: FF\n";
+        String expectedOutput = "The hexadecimal value is: FF\n";
         assertEquals(expectedOutput, outputStream.toString());
 
         System.setOut(System.out);
@@ -48,9 +48,10 @@ public class Dec2HexTest {
         System.setOut(new PrintStream(outputStream));
 
         Dec2Hex.main(new String[]{"0"});
-        String expectedOutput = "Hexadecimal: 0\n";
+        String expectedOutput = "The hexadecimal value is: 0\n";
         assertEquals(expectedOutput, outputStream.toString());
 
         System.setOut(System.out);
     }
 }
+
