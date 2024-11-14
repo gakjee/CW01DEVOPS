@@ -1,28 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: com.example.Dec2HexTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.098 s <<< FAILURE! - in com.example.Dec2HexTest
-testNonIntegerInput  Time elapsed: 0.073 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-expected: <Invalid input. Please enter a valid integer.
-> but was: <>
-	at com.example.Dec2HexTest.testNonIntegerInput(Dec2HexTest.java:40)
+Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.088 s <<< FAILURE! - in com.example.Dec2HexTest
+testNonIntegerInput  Time elapsed: 0.054 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.example.Dec2HexTest.testNonIntegerInput(Dec2HexTest.java:47)
 
-testValidInput  Time elapsed: 0.003 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-expected: <The hexadecimal value is: FF
-> but was: <>
-	at com.example.Dec2HexTest.testValidInput(Dec2HexTest.java:16)
+testValidInput  Time elapsed: 0.008 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.example.Dec2HexTest.testValidInput(Dec2HexTest.java:19)
 
-testMissingInput  Time elapsed: 0.001 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-expected: <Please provide a decimal number as an argument.
-> but was: <>
-	at com.example.Dec2HexTest.testMissingInput(Dec2HexTest.java:28)
+testMissingInput  Time elapsed: 0.005 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.example.Dec2HexTest.testMissingInput(Dec2HexTest.java:33)
 
 testZeroInput  Time elapsed: 0.004 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-expected: <The hexadecimal value is: 0
-> but was: <>
-	at com.example.Dec2HexTest.testZeroInput(Dec2HexTest.java:52)
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.example.Dec2HexTest.testZeroInput(Dec2HexTest.java:61)
 
