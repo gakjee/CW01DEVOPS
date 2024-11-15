@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -43,27 +44,27 @@ public class Dec2HexTest {
     public void testValidInput() {
         Dec2Hex.main(new String[]{"255"});
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("INFO: The hexadecimal value is: FF"));
+        assertTrue(logOutput.contains("INFO: The hexadecimal value is: FF"), "Valid input test failed.");
     }
 
     @Test
     public void testMissingInput() {
         Dec2Hex.main(new String[]{});
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("SEVERE: Please provide a decimal number as an argument."));
+        assertTrue(logOutput.contains("SEVERE: Please provide a decimal number as an argument."), "Missing input test failed.");
     }
 
     @Test
     public void testNonIntegerInput() {
         Dec2Hex.main(new String[]{"abc"});
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("SEVERE: Invalid input. Please enter a valid integer."));
+        assertTrue(logOutput.contains("SEVERE: Invalid input. Please enter a valid integer."), "Non-integer input test failed.");
     }
 
     @Test
     public void testZeroInput() {
         Dec2Hex.main(new String[]{"0"});
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("INFO: The hexadecimal value is: 0"));
+        assertTrue(logOutput.contains("INFO: The hexadecimal value is: 0"), "Zero input test failed.");
     }
 }
