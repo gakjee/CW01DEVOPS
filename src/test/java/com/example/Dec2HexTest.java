@@ -27,32 +27,32 @@ public class Dec2HexTest {
     @Test
     public void testValidInput() {
         Dec2Hex.main(new String[]{"255"});
-        streamHandler.flush();
+        streamHandler.flush();  // Ensure all log output is written to logContent
         String logOutput = logContent.toString().trim();
-        assertTrue(Pattern.compile("The hexadecimal value is: ?(?i)FF").matcher(logOutput).find(), "Valid input test failed.");
+        assertTrue(logOutput.contains("The hexadecimal value is: FF"), "Valid input test failed.");
     }
 
     @Test
     public void testMissingInput() {
         Dec2Hex.main(new String[]{});
-        streamHandler.flush();
+        streamHandler.flush();  // Ensure all log output is written to logContent
         String logOutput = logContent.toString().trim();
-        assertTrue(Pattern.compile("Please provide a decimal number as an argument").matcher(logOutput).find(), "Missing input test failed.");
+        assertTrue(logOutput.contains("Please provide a decimal number as an argument."), "Missing input test failed.");
     }
 
     @Test
     public void testNonIntegerInput() {
         Dec2Hex.main(new String[]{"abc"});
-        streamHandler.flush();
+        streamHandler.flush();  // Ensure all log output is written to logContent
         String logOutput = logContent.toString().trim();
-        assertTrue(Pattern.compile("Invalid input. Please enter a valid integer").matcher(logOutput).find(), "Non-integer input test failed.");
+        assertTrue(logOutput.contains("Invalid input. Please enter a valid integer."), "Non-integer input test failed.");
     }
 
     @Test
     public void testZeroInput() {
         Dec2Hex.main(new String[]{"0"});
-        streamHandler.flush();
+        streamHandler.flush();  // Ensure all log output is written to logContent
         String logOutput = logContent.toString().trim();
-        assertTrue(Pattern.compile("The hexadecimal value is: ?0").matcher(logOutput).find(), "Zero input test failed.");
+        assertTrue(logOutput.contains("The hexadecimal value is: 0"), "Zero input test failed.");
     }
 }

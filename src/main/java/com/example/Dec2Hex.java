@@ -11,14 +11,13 @@ public class Dec2Hex {
 
     public static void main(String[] args) {
         // Set up logger
-        logger.setUseParentHandlers(false); // Prevent duplicate logs
+        logger.setUseParentHandlers(false);
         ConsoleHandler handler = new ConsoleHandler();
-        handler.setFormatter(new SimpleFormatter()); // Use simple formatting to match test expectations
+        handler.setFormatter(new SimpleFormatter());
         handler.setLevel(Level.ALL);
         logger.addHandler(handler);
-        logger.setLevel(Level.ALL); // Set logger level to ALL to capture all messages
+        logger.setLevel(Level.ALL);
 
-        // Process input arguments
         if (args.length == 0) {
             logger.severe("Please provide a decimal number as an argument.");
             return;
