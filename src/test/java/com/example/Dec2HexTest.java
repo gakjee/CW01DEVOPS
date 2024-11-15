@@ -44,6 +44,7 @@ public class Dec2HexTest {
     public void testValidInput() {
         Dec2Hex.main(new String[]{"255"});
         String logOutput = logContent.toString();
+        System.out.println("Log Output (Valid Input Test): " + logOutput);
         assertTrue(logOutput.contains("INFO: The hexadecimal value is: FF"), "Valid input test failed.");
     }
 
@@ -51,6 +52,7 @@ public class Dec2HexTest {
     public void testMissingInput() {
         Dec2Hex.main(new String[]{});
         String logOutput = logContent.toString();
+        System.out.println("Log Output (Missing Input Test): " + logOutput);
         assertTrue(logOutput.contains("SEVERE: Please provide a decimal number as an argument."), "Missing input test failed.");
     }
 
@@ -58,6 +60,7 @@ public class Dec2HexTest {
     public void testNonIntegerInput() {
         Dec2Hex.main(new String[]{"abc"});
         String logOutput = logContent.toString();
+        System.out.println("Log Output (Non-Integer Input Test): " + logOutput);
         assertTrue(logOutput.contains("SEVERE: Invalid input. Please enter a valid integer."), "Non-integer input test failed.");
     }
 
@@ -65,6 +68,7 @@ public class Dec2HexTest {
     public void testZeroInput() {
         Dec2Hex.main(new String[]{"0"});
         String logOutput = logContent.toString();
+        System.out.println("Log Output (Zero Input Test): " + logOutput);
         assertTrue(logOutput.contains("INFO: The hexadecimal value is: 0"), "Zero input test failed.");
     }
 }
