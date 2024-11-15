@@ -18,11 +18,6 @@ public class Dec2HexTest {
         streamHandler = new StreamHandler(logContent, new SimpleFormatter());
 
         logger.setUseParentHandlers(false);
-        Handler[] handlers = logger.getHandlers();
-        for (Handler handler : handlers) {
-            logger.removeHandler(handler);
-        }
-
         logger.addHandler(streamHandler);
         streamHandler.setLevel(Level.ALL);
         logger.setLevel(Level.ALL);
