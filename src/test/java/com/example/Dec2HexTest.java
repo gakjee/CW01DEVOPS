@@ -4,40 +4,27 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 public class Dec2HexTest {
 
-    private final Logger logger = Logger.getLogger(Dec2HexTest.class.getName());
+    private final Logger logger = Logger.getLogger(Dec2Hex.class.getName());
     private ByteArrayOutputStream logContent;
 
     @BeforeEach
     public void setUp() {
         logContent = new ByteArrayOutputStream();
-        Handler consoleHandler = new ConsoleHandler() {
-            @Override
-            public void publish(LogRecord logRecord) {
-                try {
-                    logContent.write((logRecord.getLevel() + ": " + logRecord.getMessage() + "\n").getBytes());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
+        StreamHandler streamHandler = new StreamHandler(logContent, new SimpleFormatter());
 
-        if (consoleHandler.getFormatter() == null) {
-            consoleHandler.setFormatter(new SimpleFormatter());
+        logger.setUseParentHandlers(false);
+        Handler[] handlers = logger.getHandlers();
+        for (Handler handler : handlers) {
+            logger.removeHandler(handler);
         }
 
-        consoleHandler.setLevel(Level.ALL);
-        logger.setUseParentHandlers(false);
-        logger.addHandler(consoleHandler);
+        logger.addHandler(streamHandler);
+        streamHandler.setLevel(Level.ALL);
+        logger.setLevel(Level.ALL);
     }
 
     @Test
