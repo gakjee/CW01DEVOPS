@@ -11,7 +11,6 @@ public class Dec2Hex {
     private static final Logger logger = Logger.getLogger(Dec2Hex.class.getName());
 
     static {
-        // Set up logger only once using static initializer
         logger.setUseParentHandlers(false);
         ConsoleHandler handler = new ConsoleHandler();
         handler.setFormatter(new SimpleFormatter());
@@ -20,7 +19,6 @@ public class Dec2Hex {
         logger.setLevel(Level.ALL);
     }
 
-    // Method to add a custom handler
     public static void addHandler(Handler handler) {
         logger.addHandler(handler);
     }
@@ -34,7 +32,7 @@ public class Dec2Hex {
         try {
             int decimalValue = Integer.parseInt(args[0]);
             String hexValue = Integer.toHexString(decimalValue).toUpperCase();
-            logger.info("The hexadecimal value is: " + hexValue);
+            logger.log(Level.INFO, "The hexadecimal value is: {0}", hexValue);
         } catch (NumberFormatException e) {
             logger.severe("Invalid input. Please enter a valid integer.");
         }
