@@ -22,7 +22,7 @@ public class Dec2Hex {
         try {
             int decimalValue = Integer.parseInt(args[0]);
             String hexValue = Integer.toHexString(decimalValue).toUpperCase();
-            logger.info("The hexadecimal value is: " + hexValue);
+            logger.log(Level.INFO, "The hexadecimal value is: {0}", hexValue);
         } catch (NumberFormatException e) {
             logger.severe("Invalid input. Please enter a valid integer.");
         }
