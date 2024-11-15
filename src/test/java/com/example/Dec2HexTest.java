@@ -28,7 +28,7 @@ public class Dec2HexTest {
         Dec2Hex.main(new String[]{"255"});
         streamHandler.flush();  
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("INFO: The hexadecimal value is: FF"), "Valid input test failed.");
+        assertTrue(logOutput.contains("INFO: The hexadecimal value is: FF\n"), "Valid input test failed.");
     }
 
     @Test
@@ -36,7 +36,7 @@ public class Dec2HexTest {
         Dec2Hex.main(new String[]{});
         streamHandler.flush();  
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("SEVERE: Please provide a decimal number as an argument."), "Missing input test failed.");
+        assertTrue(logOutput.contains("SEVERE: Please provide a decimal number as an argument.\n"), "Missing input test failed.");
     }
 
     @Test
@@ -44,7 +44,7 @@ public class Dec2HexTest {
         Dec2Hex.main(new String[]{"abc"});
         streamHandler.flush();  
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("SEVERE: Invalid input. Please enter a valid integer."), "Non-integer input test failed.");
+        assertTrue(logOutput.contains("SEVERE: Invalid input. Please enter a valid integer.\n"), "Non-integer input test failed.");
     }
 
     @Test
@@ -52,6 +52,6 @@ public class Dec2HexTest {
         Dec2Hex.main(new String[]{"0"});
         streamHandler.flush();  
         String logOutput = logContent.toString();
-        assertTrue(logOutput.contains("INFO: The hexadecimal value is: 0"), "Zero input test failed.");
+        assertTrue(logOutput.contains("INFO: The hexadecimal value is: 0\n"), "Zero input test failed.");
     }
 }
