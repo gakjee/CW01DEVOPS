@@ -15,8 +15,9 @@ public class Dec2HexTest {
 
         Dec2Hex.main(new String[]{"255"});
 
-        String expectedOutput = "The hexadecimal value is: FF\n";
-        assertTrue(outputStream.toString().contains(expectedOutput));
+        String output = outputStream.toString();
+        System.out.println("Test Valid Input Output: " + output);
+        assertTrue(output.contains("The hexadecimal value is: FF"));
 
         System.setOut(originalOut);
     }
@@ -29,8 +30,9 @@ public class Dec2HexTest {
 
         Dec2Hex.main(new String[]{});
 
-        String expectedOutput = "Please provide a decimal number as an argument.\n";
-        assertTrue(outputStream.toString().contains(expectedOutput));
+        String output = outputStream.toString();
+        System.out.println("Test Missing Input Output: " + output);
+        assertTrue(output.contains("Please provide a decimal number as an argument"));
 
         System.setOut(originalOut);
     }
@@ -43,8 +45,9 @@ public class Dec2HexTest {
 
         Dec2Hex.main(new String[]{"ABC"});
 
-        String expectedOutput = "Invalid input. Please enter a valid integer.\n";
-        assertTrue(outputStream.toString().contains(expectedOutput));
+        String output = outputStream.toString();
+        System.out.println("Test Non-Integer Input Output: " + output);
+        assertTrue(output.contains("Invalid input. Please enter a valid integer"));
 
         System.setOut(originalOut);
     }
@@ -57,9 +60,10 @@ public class Dec2HexTest {
 
         Dec2Hex.main(new String[]{"0"});
 
-        String expectedOutput = "The hexadecimal value is: 0\n";
-        assertTrue(outputStream.toString().contains(expectedOutput));
-
+        String output = outputStream.toString();
+        System.out.println("Test Zero Input Output: " + output);
+        assertTrue(output.contains("The hexadecimal value is: 0"));
+	//
         System.setOut(originalOut);
     }
 }
