@@ -9,7 +9,7 @@ import java.util.logging.Handler;
 public class Dec2Hex {
 
     private static final Logger logger = Logger.getLogger(Dec2Hex.class.getName());
-
+    //video demonstration
     static {
         logger.setUseParentHandlers(false);
         ConsoleHandler handler = new ConsoleHandler();
