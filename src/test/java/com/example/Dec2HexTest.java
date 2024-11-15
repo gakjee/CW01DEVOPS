@@ -15,6 +15,8 @@ public class Dec2HexTest {
     public void setUp() {
         logContent = new ByteArrayOutputStream();
         streamHandler = new StreamHandler(logContent, new SimpleFormatter());
+
+        
         Dec2Hex.addHandler(streamHandler);
         streamHandler.setLevel(Level.ALL);
     }
@@ -22,7 +24,7 @@ public class Dec2HexTest {
     @Test
     public void testValidInput() {
         Dec2Hex.main(new String[]{"255"});
-        streamHandler.flush();  
+        streamHandler.flush();
         String logOutput = logContent.toString().trim();
         assertTrue(logOutput.contains("The hexadecimal value is: FF"), "Valid input test failed.");
     }
@@ -30,7 +32,7 @@ public class Dec2HexTest {
     @Test
     public void testMissingInput() {
         Dec2Hex.main(new String[]{});
-        streamHandler.flush(); 
+        streamHandler.flush();
         String logOutput = logContent.toString().trim();
         assertTrue(logOutput.contains("Please provide a decimal number as an argument."), "Missing input test failed.");
     }
@@ -38,7 +40,7 @@ public class Dec2HexTest {
     @Test
     public void testNonIntegerInput() {
         Dec2Hex.main(new String[]{"abc"});
-        streamHandler.flush();  
+        streamHandler.flush();
         String logOutput = logContent.toString().trim();
         assertTrue(logOutput.contains("Invalid input. Please enter a valid integer."), "Non-integer input test failed.");
     }
@@ -46,8 +48,32 @@ public class Dec2HexTest {
     @Test
     public void testZeroInput() {
         Dec2Hex.main(new String[]{"0"});
-        streamHandler.flush(); 
+        streamHandler.flush();
         String logOutput = logContent.toString().trim();
         assertTrue(logOutput.contains("The hexadecimal value is: 0"), "Zero input test failed.");
+    }
+
+    @Test
+    public void testNegativeInput() {
+        Dec2Hex.main(new String[]{"-10"});
+        streamHandler.flush();
+        String logOutput = logContent.toString().trim();
+        assertTrue(logOutput.contains("The hexadecimal value is: FFFFFFF6"), "Negative input test failed.");
+    }
+
+    @Test
+    public void testMaxIntegerInput() {
+        Dec2Hex.main(new String[]{String.valueOf(Integer.MAX_VALUE)});
+        streamHandler.flush();
+        String logOutput = logContent.toString().trim();
+        assertTrue(logOutput.contains("The hexadecimal value is: 7FFFFFFF"), "Max integer input test failed.");
+    }
+
+    @Test
+    public void testMinIntegerInput() {
+        Dec2Hex.main(new String[]{String.valueOf(Integer.MIN_VALUE)});
+        streamHandler.flush();
+        String logOutput = logContent.toString().trim();
+        assertTrue(logOutput.contains("The hexadecimal value is: 80000000"), "Min integer input test failed.");
     }
 }
