@@ -8,7 +8,7 @@ import java.util.logging.*;
 
 public class Dec2HexTest {
 
-    private final Logger logger = Logger.getLogger(Dec2Hex.class.getName());
+    private final Logger logger = Logger.getLogger(Dec2HexTest.class.getName());
     private ByteArrayOutputStream logContent;
     private StreamHandler streamHandler;
 
